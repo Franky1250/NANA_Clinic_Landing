@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: "https://nana-clinic-prateek2.vercel.app",
+    origin: "https://nana-clinic-prateek-page.vercel.app", // Frontend URL
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
@@ -28,9 +28,10 @@ const transporter = nodemailer.createTransport({
 
 // API to send email
 app.post("/send-email", async (req, res) => {
-    const { name, mobile, explanation, address } = req.body; // ✅ Extract values properly
+    const { name, mobile, explanation, address } = req.body;
 
     if (!name || !mobile || !explanation || !address) {
+        console.error("Missing fields in request body:", req.body);
         return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -43,6 +44,7 @@ app.post("/send-email", async (req, res) => {
 
     try {
         await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully");
         res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {
         console.error("Error sending email:", error);

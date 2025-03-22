@@ -56,11 +56,12 @@ const AppointmentForm = () => {
       name: formData.name,
       mobile: formData.mobile,
       explanation: formData.problem,
-      address: formData.address, // Include address in submission data
+      address: formData.address,
     };
 
     try {
-      const response = await fetch('https://nana-clinic-landing-prateek2.vercel.app/send-email',
+      const response = await fetch(
+        "https://nana-clinic-landing-prateek2.vercel.app/send-email", // Updated backend URL
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -98,7 +99,6 @@ const AppointmentForm = () => {
       <section id="appointment" className="py-1 bg-white" ref={sectionRef}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        
             {/* Form */}
             <div
               className="bg-clinic-secondary rounded-xl shadow-lg p-8 reveal"
@@ -222,7 +222,7 @@ const AppointmentForm = () => {
                 </p>
               </form>
             </div>
-            
+
             {/* Clinic Details */}
             <div className="space-y-6">
               <span className="inline-block px-4 py-1.5 bg-clinic-muted text-clinic-primary rounded-full text-sm font-medium reveal">
@@ -250,7 +250,7 @@ const AppointmentForm = () => {
               >
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-full bg-clinic-muted flex items-center justify-center flex-shrink-0 mt-1">
-                   <IoCallOutline className="h-5 w-5 text-clinic-primary" />
+                    <IoCallOutline className="h-5 w-5 text-clinic-primary" />
                   </div>
                   <div>
                     <h3 className="font-medium text-clinic-accent">Phone</h3>
@@ -294,7 +294,7 @@ const AppointmentForm = () => {
                 />
               </div>
             </div>
-
+            
           </div>
         </div>
       </section>
