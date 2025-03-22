@@ -41,7 +41,7 @@ const HeroLanding = () => {
             Advanced Hearing Technology
           </span>
           <h1
-            className="text-3xl md:text-3xl lg:text-3xl font-bold text-clinic-accent leading-tight reveal"
+            className="text-xl md:text-xl lg:text-xl font-bold text-clinic-accent leading-tight reveal"
             style={{ transitionDelay: "100ms" }}
           >
             <span className="text-clinic-primary">This German Technology </span> <br />
@@ -83,7 +83,7 @@ const HeroLanding = () => {
         {/* Carousels Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="reveal" style={{ transitionDelay: "300ms" }}>
-            <Carousel autoSlide={true} autoslideInterval={4000}>
+            <Carousel autoslideInterval={4000}>
               {carousel1Images.map((src, index) => (
                 <img 
                   key={index} 
@@ -96,7 +96,7 @@ const HeroLanding = () => {
           </div>
           
           <div className="reveal" style={{ transitionDelay: "600ms" }}>
-            <Carousel autoSlide={true} autoslideInterval={5000}>
+            <Carousel autoslideInterval={4000}>
               {carousel2Images.map((src, index) => (
                 <img 
                   key={index} 
@@ -109,7 +109,7 @@ const HeroLanding = () => {
           </div>
           
           <div className="reveal" style={{ transitionDelay: "900ms" }}>
-            <Carousel autoSlide={true} autoslideInterval={6000}>
+            <Carousel autoslideInterval={4000}>
               {carousel3Images.map((src, index) => (
                 <img 
                   key={index} 

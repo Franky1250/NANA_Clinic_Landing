@@ -60,8 +60,7 @@ const AppointmentForm = () => {
     };
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${backendUrl}/send-email`,
+      const response = await fetch('https://nana-clinic-landing-prateek2.vercel.app/send-email',
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -168,7 +167,7 @@ const AppointmentForm = () => {
                     htmlFor="address"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Address *
+                    Location *
                   </label>
                   <input
                     type="text"
@@ -178,7 +177,7 @@ const AppointmentForm = () => {
                     onChange={handleInputChange}
                     required
                     className="input-field"
-                    placeholder="Enter your address"
+                    placeholder="Enter your location"
                   />
                 </div>
 
