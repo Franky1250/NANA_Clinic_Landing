@@ -96,7 +96,7 @@ const AppointmentForm = () => {
 
   return (
     <>
-      <section id="appointment" className="py-20 bg-white" ref={sectionRef}>
+      <section id="appointment" className="py-1 bg-white" ref={sectionRef}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         

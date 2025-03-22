@@ -33,16 +33,16 @@ const Navbar = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled 
-          ? 'py-4 bg-white bg-opacity-90 backdrop-blur-sm shadow-md'
-          : 'py-6 bg-transparent'
+          ? 'py-2 bg-white bg-opacity-90 backdrop-blur-sm shadow-md'
+          : 'py-4 bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-3 lg:px-5">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#" className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-clinic-accent">
-                <img src="/images/Logo.png-removebg.png" className='w-28 h-28' alt="logo" />
+                <img src="/images/Logo.png-removebg.png" className='w-24 h-24' alt="logo" />
               </span>
             </a>
           </div>
