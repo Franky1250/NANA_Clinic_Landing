@@ -56,12 +56,12 @@ const HeroLanding = () => {
         {/* Features */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-6">
           {[
-            { delay: "400ms", text: "Smartphone Connectivity", icon: <IoMdCheckmarkCircle /> },
-            { delay: "500ms", text: "Nearly Invisible Design", icon: <IoMdCheckmarkCircle /> },
-            { delay: "600ms", text: "Rechargeable Hearing Machine", icon: <IoMdCheckmarkCircle /> },
-            { delay: "700ms", text: "Exchange Offer", icon: <IoMdCheckmarkCircle /> },
-            { delay: "800ms", text: "Tiny Invisible Rechargeable", icon: <IoMdCheckmarkCircle /> },
-            { delay: "900ms", text: "Premium Sound Quality", icon: <IoMdCheckmarkCircle /> },
+            { delay: "100ms", text: "Smartphone Connectivity", icon: <IoMdCheckmarkCircle /> },
+            { delay: "200ms", text: "Nearly Invisible Design", icon: <IoMdCheckmarkCircle /> },
+            { delay: "300ms", text: "Rechargeable Hearing Machine", icon: <IoMdCheckmarkCircle /> },
+            { delay: "400ms", text: "Exchange Offer", icon: <IoMdCheckmarkCircle /> },
+            { delay: "500ms", text: "Tiny Invisible Rechargeable", icon: <IoMdCheckmarkCircle /> },
+            { delay: "600ms", text: "Premium Sound Quality", icon: <IoMdCheckmarkCircle /> },
           ].map((feature, index) => (
             <div
               key={index}
@@ -95,7 +95,7 @@ const HeroLanding = () => {
             </Carousel>
           </div>
           
-          <div className="reveal" style={{ transitionDelay: "600ms" }}>
+          <div className="reveal" style={{ transitionDelay: "300ms" }}>
             <Carousel autoslideInterval={4000}>
               {carousel2Images.map((src, index) => (
                 <img 
@@ -108,7 +108,7 @@ const HeroLanding = () => {
             </Carousel>
           </div>
           
-          <div className="reveal" style={{ transitionDelay: "900ms" }}>
+          <div className="reveal" style={{ transitionDelay: "400ms" }}>
             <Carousel autoslideInterval={4000}>
               {carousel3Images.map((src, index) => (
                 <img 
@@ -135,21 +135,21 @@ const HeroLanding = () => {
                 subtitle: "Hearing Test",
                 description: "To check your hearing difficulties our Audiologist (Ear Specialists) will check your learning health & will prescribe accordingly to your diagnosis.",
                 image: "/images/treating-a-patient.jpg",
-                delay: "300ms"
+                delay: "200ms"
               },
               {
                 title: "2",
                 subtitle: "Choose suitable Hearing Aids",
                 description: "According to your hearing loss, suitable hearing aid will be trial and get fitted.",
                 image: "/images/Step-2.jpg",
-                delay: "600ms"
+                delay: "200ms"
               },
               {
                 title: "3",
                 subtitle: "Regular Fine tuning",
                 description: "Frequently check up & sound adjustment will be done for your better hearing without cost for lifetime.",
                 image: "/images/Step-3.jpg",
-                delay: "900ms"
+                delay: "200ms"
               },
             ].map((card, index) => (
               <div
