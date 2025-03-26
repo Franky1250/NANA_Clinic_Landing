@@ -51,43 +51,47 @@ const AppointmentForm = () => {
     event.preventDefault();
     setIsSubmitting(true);
     setFormStatus({ type: null, message: "" });
-
+  
     const submissionData = {
       name: formData.name,
       mobile: formData.mobile,
       explanation: formData.problem,
       address: formData.address,
     };
-
+  
     try {
+      console.log("Submitting data:", submissionData); // Debug log
+      
       const response = await fetch(
-        "https://nana-clinic-landing-prateek2.vercel.app/send-email", // Updated backend URL
+        "https://nana-clinic-landing-prateek2.vercel.app/send-email",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(submissionData),
         }
       );
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setFormStatus({
-          type: "success",
-          message: "Your appointment request has been submitted successfully!",
-        });
-        setFormData({ name: "", mobile: "", problem: "", address: "" }); // Reset form
-      } else {
-        setFormStatus({
-          type: "error",
-          message: data.error || "Something went wrong. Please try again.",
-        });
+  
+      console.log("Response status:", response.status); // Debug log
+      
+      // Check for HTTP errors
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
+  
+      const data = await response.json();
+      console.log("Response data:", data); // Debug log
+      
+      setFormStatus({
+        type: "success",
+        message: "Your appointment request has been submitted successfully!",
+      });
+      setFormData({ name: "", mobile: "", problem: "", address: "" });
     } catch (error) {
-      console.error("Request failed:", error);
+      console.error("Submission error:", error);
       setFormStatus({
         type: "error",
-        message: "There was an error submitting your request.",
+        message: error.message || "There was an error submitting your request.",
       });
     } finally {
       setIsSubmitting(false);

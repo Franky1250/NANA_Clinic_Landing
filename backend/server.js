@@ -6,68 +6,98 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 
-// Allow requests from both the Vercel deployment and custom domain
-const allowedOrigins = [
-  "https://nanahearing.com", // Your custom domain
-  "https://nana-clinic-prateek-page.vercel.app", // Original frontend Vercel URL (optional)
-];
+// Enhanced CORS configuration
+app.use(cors({
+  origin: [
+    "https://nanahearing.com",
+    "https://www.nanahearing.com",
+    "https://nana-clinic-prateek-page.vercel.app"
+  ],
+  methods: ["GET", "POST", "OPTIONS"], // Added OPTIONS for preflight
+  allowedHeaders: ["Content-Type"],
+  credentials: true
+}));
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+// Handle preflight requests
+app.options("*", cors());
 
-// Nodemailer Transport
+// Enhanced transporter configuration
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  secure: false, // Use TLS
+  secure: process.env.SMTP_SECURE === 'true', // Convert string to boolean
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false, // Fix potential TLS issues
+    rejectUnauthorized: false,
   },
+  logger: true, // Enable logging
+  debug: true   // Enable debug output
 });
 
-// API to send email
+// Enhanced email endpoint
 app.post("/send-email", async (req, res) => {
+  console.log("Received request:", req.body); // Log incoming request
+  
   const { name, mobile, explanation, address } = req.body;
 
+  // Validate required fields
   if (!name || !mobile || !explanation || !address) {
-    console.error("Missing fields in request body:", req.body);
-    return res.status(400).json({ error: "All fields are required" });
+    const error = "All fields are required";
+    console.error(error);
+    return res.status(400).json({ 
+      error,
+      receivedData: req.body // Include received data for debugging
+    });
+  }
+
+  // Validate mobile number format
+  if (!/^\d{10}$/.test(mobile)) {
+    return res.status(400).json({ error: "Mobile number must be 10 digits" });
   }
 
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_TO,
-    subject: "New Appointment Request",
-    text: `Name: ${name}\nMobile: ${mobile}\nAddress: ${address}\nExplanation: ${explanation}`,
+    subject: "New Appointment Request from Nana Hearing Clinic",
+    html: `
+      <h2>New Appointment Request</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Mobile:</strong> ${mobile}</p>
+      <p><strong>Address:</strong> ${address}</p>
+      <p><strong>Problem Description:</strong></p>
+      <p>${explanation}</p>
+    `,
+    text: `Name: ${name}\nMobile: ${mobile}\nAddress: ${address}\nProblem: ${explanation}`
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully");
-    res.status(200).json({ message: "Email sent successfully" });
+    console.log("Attempting to send email:", mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.messageId);
+    
+    res.status(200).json({ 
+      message: "Email sent successfully",
+      messageId: info.messageId 
+    });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error("Email send error:", error);
+    res.status(500).json({ 
+      error: "Failed to send email",
+      details: error.message 
+    });
   }
 });
 
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "healthy" });
+});
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`Allowed origins: ${process.env.ALLOWED_ORIGINS}`);
+});
