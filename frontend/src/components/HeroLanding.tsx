@@ -133,7 +133,7 @@ const HeroLanding = () => {
               {
                 title: "1",
                 subtitle: "Hearing Test",
-                description: "To check your hearing difficulties our Audiologist (Ear Specialists) will check your learning health & will prescribe accordingly to your diagnosis.",
+                description: "To check your hearing difficulties our Audiologist (Ear Specialists) will check your hearing health & will prescribe accordingly to your diagnosis.",
                 image: "/images/treating-a-patient.jpg",
                 delay: "200ms"
               },
