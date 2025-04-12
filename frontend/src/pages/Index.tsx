@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import ScrollToTop from '@/components/ScrollToTop';
@@ -7,21 +6,9 @@ import HeroLanding from '@/components/HeroLanding';
 import AppointmentForm from '@/components/AppointmentForm';
 import Footer from '@/components/Footer';
 import ActionButtons from '@/components/ActionButtons';
-
-// Extend window to include fbq
-declare global {
-  interface Window {
-    fbq?: (...args: any[]) => void;
-  }
-}
+import FacebookPixel from '@/components/FacebookPixel';
 
 const Index = () => {
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq('track', 'PageView');
-    }
-  }, []);
 
   useEffect(() => {
     // Activate reveal animations on scroll
@@ -50,6 +37,7 @@ const Index = () => {
 
   return (
     <div id="home" className="min-h-screen bg-gradient-to-b from-clinic-secondary via-white to-clinic-secondary">
+      <FacebookPixel />
       <ScrollToTop />
       <Navbar />
       <HeroLanding />
