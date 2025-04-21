@@ -7,6 +7,7 @@ import AppointmentForm from '@/components/AppointmentForm';
 import Footer from '@/components/Footer';
 import ActionButtons from '@/components/ActionButtons';
 import FacebookPixel from '@/components/FacebookPixel';
+import ProcessCards from '@/components/ProcessCards';
 
 const Index = () => {
 
@@ -42,6 +43,7 @@ const Index = () => {
       <Navbar />
       <HeroLanding />
       <AppointmentForm />
+      <ProcessCards />
       <Footer />
       <ActionButtons />
       <Toaster />
