@@ -141,8 +141,7 @@ const AppointmentForm = () => {
               className="bg-clinic-secondary rounded-xl shadow-lg p-8 reveal"
               style={{ transitionDelay: "300ms" }}
             >
-              {/* inline-block px-4 py-1.5 bg-clinic-muted text-clinic-primary rounded-full text-sm font-medium reveal */}
-              <h3 className="inline-block px-4 py-1.5 bg-orange-300 text-white rounded-full text-2xl font-medium reveal mb-6">
+              <h3 className="w-full text-center inline-block px-4 py-1.5 bg-orange-300 text-white rounded-full text-2xl font-medium reveal mb-6">
                 Get Price Estimate Now
               </h3>
 
@@ -241,7 +240,7 @@ const AppointmentForm = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full text-xl flex items-center justify-center bg-green-400 text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:bg-clinic-accent hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-clinic-primary focus:ring-offset-2 ${
+                  className={`w-full text-2xl flex items-center justify-center bg-green-400 text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:bg-clinic-accent hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-clinic-primary focus:ring-offset-2 ${
                     isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                   }`}
                 >
