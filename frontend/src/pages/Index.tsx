@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import ActionButtons from '@/components/ActionButtons';
 import FacebookPixel from '@/components/FacebookPixel';
 import ProcessCards from '@/components/ProcessCards';
+import PriceSticker from '@/components/PriceSticker';
 
 const Index = () => {
 
@@ -39,7 +40,8 @@ const Index = () => {
   return (
     <div id="home" className="min-h-screen bg-gradient-to-b from-clinic-secondary via-white to-clinic-secondary">
       <FacebookPixel />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
+      <PriceSticker />
       <Navbar />
       <HeroLanding />
       <AppointmentForm />

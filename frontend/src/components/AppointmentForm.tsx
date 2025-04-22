@@ -142,7 +142,7 @@ const AppointmentForm = () => {
               style={{ transitionDelay: "300ms" }}
             >
               <h3 className="text-2xl font-bold text-clinic-accent mb-6">
-                Request an Appointment
+                Get Price Estimate Now
               </h3>
 
               {/* Status messages */}
@@ -249,7 +249,7 @@ const AppointmentForm = () => {
                       Processing...
                     </>
                   ) : (
-                    "Book Appointment"
+                    "Book a Hearing Aid Trial"
                   )}
                 </button>
 
