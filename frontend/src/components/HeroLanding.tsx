@@ -57,11 +57,9 @@ const HeroLanding = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-6">
           {[
             { delay: "100ms", text: "Smartphone Connectivity", icon: <IoMdCheckmarkCircle /> },
-            { delay: "200ms", text: "Nearly Invisible Design", icon: <IoMdCheckmarkCircle /> },
             { delay: "300ms", text: "Rechargeable Hearing Machine", icon: <IoMdCheckmarkCircle /> },
-            { delay: "400ms", text: "Exchange Offer", icon: <IoMdCheckmarkCircle /> },
             { delay: "500ms", text: "Tiny Invisible Rechargeable", icon: <IoMdCheckmarkCircle /> },
-            { delay: "600ms", text: "Premium Sound Quality", icon: <IoMdCheckmarkCircle /> },
+            { delay: "400ms", text: "Exchange Offer", icon: <IoMdCheckmarkCircle /> },
           ].map((feature, index) => (
             <div
               key={index}
